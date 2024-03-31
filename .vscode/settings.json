@@ -1,0 +1,11 @@
+{
+    "leetcode-problem-rating.defaultLanguage": "python3",
+    "leetcode-problem-rating.includeTemplates": [
+        {
+            "language": "python3",
+            "template": [
+                "from typing import *"
+            ]
+        },
+    ]
+}
