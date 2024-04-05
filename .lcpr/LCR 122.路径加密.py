@@ -17,6 +17,9 @@ from typing import *
 # @lc code=start
 class Solution:
     def pathEncryption(self, path: str) -> str:
+        return path.replace('.', ' ')
+    
+    def pathEncryption1(self, path: str) -> str:
         path = list(path)
         for i in range(len(path)):
             if path[i] == ".": path[i] = " "
