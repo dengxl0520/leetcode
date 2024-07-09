@@ -16,7 +16,23 @@ from typing import *
 # @lcpr-template-end
 # @lc code=start
 class Solution:            
-    def maxSubArray1(self, nums: List[int]) -> int:
+    def maxSubArray(self, nums: List[int]) -> int:
+        '''
+            dp[i]从dp[i-1]推出
+            dp[i] = max(dp[i-1]+nums[i], dp[i-1]) # 因为要求连续，不可能是dp[i-1]
+
+            dp[i] = max(dp[i-1]+nums[i], nums[i])
+        '''
+        dp = [0] * len(nums)
+        dp[0] = nums[0]
+        res = nums[0]
+        for i in range(1, len(nums)):
+            dp[i] = max(dp[i-1]+nums[i], nums[i])
+            res = max(dp[i], res)
+
+        return res
+
+    def maxSubArray2(self, nums: List[int]) -> int:
         '''
             思路二: 每一次累加，如果出现更大的，存入res
                     如果count小于0，证明累积无贡献，清零count
@@ -31,7 +47,7 @@ class Solution:
                 count = 0
         return res
     
-    def maxSubArray(self, nums: List[int]) -> int:
+    def maxSubArray1(self, nums: List[int]) -> int:
         '''
             思路一: 累计的count<0, 代表累积无贡献,
                     则将count重置为当前nums[i]
